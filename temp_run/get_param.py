@@ -83,7 +83,9 @@ def parse_params(args=None, allow_unknown=True):
 
 def set_params(values):
 	if isinstance(values, argparse.Namespace):
-		values = vars(values)
+		values = dict(vars(values))
+	else:
+		values = dict(values)
 	params.__dict__.clear()
 	params.__dict__.update(values)
 	return params
